@@ -1,16 +1,10 @@
 #!/bin/bash
 
-echo "Ready Package Examples"
-mkdir packages
-for dir in $(ls -d */ | sed 's#/##'); do
+rm -rf .zip-files
+mkdir .zip-files
 
-    cd $dir;
-    echo "go To $dir"
-    for dir2 in $(ls -d */ | sed 's#/##'); do
-        echo "package $dir/$dir2"
-        zip -r "../packages/$dir2.zip" $dir2
-    done
-    echo "go To Parent Directory"
-    cd ..
+echo "Search Directory to Package"
 
+for dir in `find * -mindepth 1 -maxdepth 2 -type d`; do
+    zip -r .zip-files/${dir##*/}.zip $dir
 done

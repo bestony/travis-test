@@ -7,5 +7,5 @@ deploy:
   provider: releases
   api_key: $GITHUB_TOKEN
   file_glob: true
-  file: packages/*
+  file: .zip-files/*
   skip_cleanup: true
